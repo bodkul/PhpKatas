@@ -33,4 +33,10 @@ describe('class BankOCR', function () {
             '123456789'
         ]);
     });
+
+    it('Kontonummer 345882865 in der Prüfsummenberechnung ist Null', function () {
+        $bank = new App\BankOCR(__DIR__ . '/../assets/PhpKatas/use_case_1_in.txt');
+
+        expect($bank->checksumCalculation(345882865))->toBe(0);
+    });
 });

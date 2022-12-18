@@ -22,4 +22,23 @@ class BankOCR
     {
         return $this->numbers;
     }
+
+    public function checksumCalculation(int $numbers): int
+    {
+        $reverseNumbers = array_reverse(mb_str_split($numbers));
+
+        $sum = 0;
+        $i = 2;
+
+        foreach ($reverseNumbers as $key => $value) {
+            if ($key === array_key_first($reverseNumbers)) {
+                $sum = $value;
+                continue;
+            }
+
+            $sum += ($i++ * $value);
+        }
+
+        return $sum % 11;
+    }
 }
